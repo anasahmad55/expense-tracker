@@ -1,12 +1,12 @@
 import "./NewExpense_form.css";
-import react, {useState} from 'react'
+import  {useState} from 'react'
 const NewExpenseForm = (props) => {
 
     const [enterTitle, setEnterTitle] = useState('');
     const [enterAmount, setEnterAmount] = useState('');
     const [enterDate, setEnterDate] = useState('');
 
-    const titleChangeHandler = (e) =>{
+    const titleChangeHandler = (e) => {
         setEnterTitle(e.target.value);
     }
     
@@ -31,6 +31,7 @@ const NewExpenseForm = (props) => {
         setEnterTitle('');
         setEnterDate('');
         setEnterAmount(''); 
+        props.onCancel();
     }
   return (
     <form onSubmit={submitHandler}>
@@ -49,8 +50,9 @@ const NewExpenseForm = (props) => {
         </div>
       </div>
       <div className='New-expense__action'>
+          <button type='button' onClick={props.onCancel}>Cancel</button>
           <button type='submit'>Add Expense</button>
-      </div>
+          </div>
     </form>
   );
 };
